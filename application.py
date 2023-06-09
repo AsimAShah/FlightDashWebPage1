@@ -12,12 +12,12 @@ airline_data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.a
                            dtype={'Div1Airport': str, 'Div1TailNum': str,
                                   'Div2Airport': str, 'Div2TailNum': str})
 
-# Create a dash application
-application = dash.Dash(__name__)
+# Create a dash app
+app = dash.Dash(__name__)
 
-server = application.server  # Add this line
+server = app.server  # Add this line
 
-application.layout = html.Div(children=[
+app.layout = html.Div(children=[
     html.H1('Airline Performance Dashboard', style={'textAlign': 'center', 'color': '#503D36', 'font-size': 40}),
     html.Div([
         "Input Year: ", dcc.Input(id='input-year', value='2010',
@@ -31,7 +31,7 @@ application.layout = html.Div(children=[
 ])
 
 # add callback decorator
-@application.callback(Output(component_id='line-plot', component_property='figure'),
+@app.callback(Output(component_id='line-plot', component_property='figure'),
                      Input(component_id='input-year', component_property='value'))
 # Add computation to callback function and return graph
 def get_graph(entered_year):
@@ -47,4 +47,4 @@ def get_graph(entered_year):
 
 # Run the app
 if __name__ == '__main__':
-    application.run_server(debug=False)
+    app.run_server(debug=False)
