@@ -15,7 +15,7 @@ airline_data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.a
 # Create a dash app
 app = dash.Dash(__name__)
 
-server = app.server  # Add this line
+server = app.server  # Create a server instance to make your app deployable & reachable
 
 app.layout = html.Div(children=[
     html.H1('Airline Performance Dashboard', style={'textAlign': 'center', 'color': '#503D36', 'font-size': 40}),
@@ -32,9 +32,11 @@ app.layout = html.Div(children=[
 
 # add callback decorator
 @app.callback(Output(component_id='line-plot', component_property='figure'),
-                     Input(component_id='input-year', component_property='value'))
+              Input(component_id='input-year', component_property='value'))
+
 # Add computation to callback function and return graph
 def get_graph(entered_year):
+    
     # Select data based on the entered year, Remeber we can specify a condition inside of []
     df = airline_data[airline_data['Year'] == int(entered_year)]
 
