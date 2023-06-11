@@ -35,7 +35,7 @@ app.layout = html.Div(children=[
                      Input(component_id='input-year', component_property='value'))
 # Add computation to callback function and return graph
 def get_graph(entered_year):
-    # Select data based on the entered year
+    # Select data based on the entered year, Remeber we can specify a condition inside of []
     df = airline_data[airline_data['Year'] == int(entered_year)]
 
     # Group the data by Month and compute the average over arrival delay time.
