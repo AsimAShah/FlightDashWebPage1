@@ -15,7 +15,7 @@ airline_data = pd.read_csv('https://cf-courses-data.s3.us.cloud-object-storage.a
 # Create a dash app
 app = dash.Dash(__name__)
 
-server = app.server  # Add this line
+server = app.server  # Create a server Instance 
 
 app.layout = html.Div(children=[
     html.H1('Airline Performance Dashboard', style={'textAlign': 'center', 'color': '#503D36', 'font-size': 40}),
@@ -46,4 +46,3 @@ def get_graph(entered_year):
     return fig
 
 # Run the app
- 
