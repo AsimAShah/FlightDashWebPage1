@@ -46,4 +46,5 @@ def get_graph(entered_year):
     return fig
 
 # Run the app
- 
+if __name__ == '__main__':
+    app.run_server()
