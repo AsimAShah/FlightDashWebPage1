@@ -20,7 +20,7 @@ server = app.server  # Create a server instance to make your app deployable & re
 app.layout = html.Div(children=[
     html.H1('Airline Performance Dashboard', style={'textAlign': 'center', 'color': '#503D36', 'font-size': 40}),
     html.Div([
-        "Input Year: ", dcc.Input(id='input-year', value='2010',
+        "Input Year: ", dcc.Input(id='input-year', value='2010',            # value can be empty but we have it set to 2010 (first value you see when on the web app)
                                   type='number', style={'height': '50px', 'font-size': 35}),
     ],
         style={'font-size': 40}
@@ -37,7 +37,7 @@ app.layout = html.Div(children=[
 # Add computation to callback function and return graph
 def get_graph(entered_year):
     
-    # Select data based on the entered year, Remeber we can specify a condition inside of []
+    # Select data based on the entered year, Remember we can specify a condition inside of []
     df = airline_data[airline_data['Year'] == int(entered_year)]
 
     # Group the data by Month and compute the average over arrival delay time.
